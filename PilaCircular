@@ -45,20 +45,13 @@ class ListaCircular():
 
 def main():
     obj = ListaCircular()
-    obj.Agregar(Nodo(40))
-    obj.Agregar(Nodo(15))
-    obj.Agregar(Nodo(100))
-    obj.Agregar(Nodo(1))
-    obj.Agregar(Nodo(50))
-    obj.Agregar(Nodo(25))
-    obj.Agregar(Nodo(75))
-    obj.Agregar(Nodo(5))
-    obj.Agregar(Nodo(3))
-    obj.Agregar(Nodo(0))
-    obj.Agregar(Nodo(-3))
-    obj.Agregar(Nodo(-20))
-    obj.Agregar(Nodo(-7))
-    obj.Agregar(Nodo(99))
+    obj.Agregar(Nodo("B"))
+    obj.Agregar(Nodo("C"))
+    obj.Agregar(Nodo("Z"))
+    obj.Agregar(Nodo("G"))
+    obj.Agregar(Nodo("I"))
+    obj.Agregar(Nodo("A"))
+    
 
     obj.Recorrer()
 
