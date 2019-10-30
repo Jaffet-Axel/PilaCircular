@@ -1,0 +1,66 @@
+class Nodo():
+    def __init__(self, dato):
+        self.dato = dato
+        self.siguiente = None
+
+
+class ListaCircular():
+
+
+    def __init__(self):     # Método constructor donde declaramos el nodo que será el primero de la lista, ahora es nulo
+        self.primero = None
+
+    def Vacia(self): #Método para indicar si la lista está vacía o no, retorna verdadero si la lista está vacía, retorna falso si la lista tiene algún dato
+        return self.primero == None
+
+    def Agregar(self, nuevoNodo):   #En este método es donde se realizarán las opciones para insertar el nuevo nodo en su orden correspondiente...
+                                    #...respecto al su valor
+        if self.Vacia():                        #Caso para cuando la lista esté vacía
+            nuevoNodo.siguiente = self.primero  #Si la lista está vacía entonces nuevo nodo se convierte en el primer nodo de la lista y apunta al primer nodo que es a sí mismo
+            self.primero = nuevoNodo
+
+        elif self.primero.dato >= nuevoNodo.dato:   #Caso para cuando el primer nodo de la lista sea mayor al nuevo nodo...
+            nuevoNodo.siguiente = self.primero      #...entonces el nuevo nodo se convertirá ahora en el primer nodo de la lista
+            self.primero = nuevoNodo
+
+        else:
+            localizador = self.primero      #Usaremos un localizador para saber qué nodo estaremos evaluando antes de insertar...#
+                                            #...localizador comenzará en el primer nodo de la lista
+            while (localizador.siguiente is not None and nuevoNodo.dato > localizador.siguiente.dato):  #Hacemos un bucle para ir evaluando nodo por nodo
+                localizador = localizador.siguiente     #Mientras la condición se cumpla, localizador seguirá pasando al siguiente nodo.
+            nuevoNodo.siguiente = localizador.siguiente     #si el nuevo nodo es mayor al nodo que indica el localizador, el nuevo nodo se...
+                                                            #...insertará adelante del nodo que indica el localizador
+            localizador.siguiente = nuevoNodo
+
+
+    def Recorrer(self):     #Usamos este método para recorrer nuestra lista e imprimirla
+        for x in range (0, 2, 1):   #Con el ciclo for la recorremos en forma circular las veces que queramos
+            aux = self.primero
+            while (aux):
+                print(aux.dato, end= " -> ")
+                aux = aux.siguiente
+                if aux == self.primero:
+                    break
+
+
+def main():
+    obj = ListaCircular()
+    obj.Agregar(Nodo(40))
+    obj.Agregar(Nodo(15))
+    obj.Agregar(Nodo(100))
+    obj.Agregar(Nodo(1))
+    obj.Agregar(Nodo(50))
+    obj.Agregar(Nodo(25))
+    obj.Agregar(Nodo(75))
+    obj.Agregar(Nodo(5))
+    obj.Agregar(Nodo(3))
+    obj.Agregar(Nodo(0))
+    obj.Agregar(Nodo(-3))
+    obj.Agregar(Nodo(-20))
+    obj.Agregar(Nodo(-7))
+    obj.Agregar(Nodo(99))
+
+    obj.Recorrer()
+
+if __name__ == '__main__':
+    main()
